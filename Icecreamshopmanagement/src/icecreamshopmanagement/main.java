@@ -150,11 +150,13 @@ public class main {
 	}
 	
 	/*
-	   * @ 메소드명 : SaveJson
-	   * @ breif  : Json파일을 저장하는 기능
-	   * @ detail : jsonObject에 저장된 내용을 선언한 위치에 Json파일로 내보냅니다.
-	   * @ 작성자   : 신희빈
-	   * @ 작성일자 : 2021 - 06 -10
+	   * @ 메소드명 	: SaveJson
+	   * @ breif  	: Json파일을 저장하는 기능
+	   * @ detail 	: jsonObject에 저장된 내용을 선언한 위치에 Json파일로 내보냅니다.
+	   * @ 작성자   	: 신희빈
+	   * @ param  	: 상품목록이 들어가있는 jsonArray객체를 저장하기 위해 받아옴(JSONArray jsonArray)
+	   * @ why   	: JSONArray에 저장되어있는 값을 Json파일로 저장하기 위해 만들었습니다.
+	   * @ 작성일자 	: 2021 - 06 -10
 	   */
 	  
 	  public void SaveJson(JSONArray jsonArray) throws IOException {
@@ -167,11 +169,13 @@ public class main {
 	  }
 	  
 	  /*
-	   * @ 메소드명 : GetJson
-	   * @ breif  : Json파일을 불러오는기능
-	   * @ detail : 선언한 위치에  Json파일로 불러옵니다.
-	   * @ 작성자   : 신희빈
-	   * @ 작성일자 : 2021 - 06 -10
+	   * @ 메소드명 	: GetJson
+	   * @ breif  	: Json파일을 불러오는기능
+	   * @ detail 	: 선언한 위치에  Json파일로 불러옵니다.
+	   * @ 작성자   	: 신희빈
+	   * @ param  	: 상품목록이 들어가있는 jsonArray객체를 불러오기 위해 받아옴(JSONArray jsonArray)
+	   * @ why   	: Json파일에 저장되어있는 JsonArray 값을 불러오기 위해 만들었습니다.
+	   * @ 작성일자 	: 2021 - 06 -10
 	   */
 	  
 	 public void GetJson(JSONArray jsonArray) throws IOException, org.json.simple.parser.ParseException  {
