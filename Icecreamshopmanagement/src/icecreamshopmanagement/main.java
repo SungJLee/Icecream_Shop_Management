@@ -179,6 +179,29 @@ public class main {
 			Object obj = parser.parse(new FileReader("src/json/mydata.json"));	// 불러올 json 파일 위치선언
 			System.out.println(obj);	// json 파일 호출
 	 }
+	  /*
+	   * @ 메소드명 : DryIceCount
+	   * @ breif  : 도착시간에 따라 드라이아이스 수를 정하는 함수
+	   * @ detail : 도착시간을 입력받아서 드라이아이스 수 정함
+	   * @ 작성자   : 박현석
+	   * @ 작성일자 : 2021 - 06 -10
+	   */
+	 public void DryIceCount() {
+		Scanner scand = new Scanner(System.in);
+		int arrivalTime = scand.nextInt();
+		
+		if (arrivalTime < 60) {
+			System.out.println("드라이아이스 1개를 넣었습니다.");
+		} else if (arrivalTime < 120) {
+			System.out.println("드라이아이스 2개를 넣었습니다.");
+		} else if (arrivalTime < 180) {
+			System.out.println("드라이아이스 3개를 넣었습니다.");
+		} else {
+			System.out.println("드라이아이스 4개를 넣었습니다.");
+		}
+		 
+	 }
+	 
 	
   public static void main(String[] args) throws IOException,org.json.simple.parser.ParseException {
 
@@ -245,13 +268,18 @@ public class main {
 						}
 						System.out.println("총 " + tempSum + "원 입니다.");
 						break;
-	
-					case 6: 
+					case 6:
+						System.out.println("예상 도착 소요 시간을 알려주세요(분단위)");
+						Main.DryIceCount();
+						break;
+					case 7: 
 						Main.SaveJson(jsonArray);
 						break;
 	
-					case 7 : // 나가기
+					case 8 :
 						Main.GetJson(jsonArray);
+						break;
+					case 9 : // 나가기
 						break;
 					default :
 						System.out.println("잘못 입력하셨습니다.");
