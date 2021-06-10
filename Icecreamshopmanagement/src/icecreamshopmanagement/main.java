@@ -13,11 +13,11 @@ import org.json.simple.parser.JSONParser;
 public class main {
 	
 	/*
-	   * @ 메소드명 : AddIcecream
+	   * @ 메소드명  : AddIcecream
 	   * @ breif  : 아이스크림 상품을 추가시키는 기능
 	   * @ detail : 아이스크림 상품항목을 jsonObject에 저장해서 return해준다
 	   * @ 작성자   : 이성재
-	   * @ 작성일자 :2021 - 06 - 10
+	   * @ 작성일자  : 2021 - 06 - 10
 	   * @ return : (JSONObject (상품id , name(이름) , price(가격) , flavor(맛) ))
 	   * @ why    : Icecream클래스 생성자를 이용해서 JSONObject 객체에 저장해 리턴해서 그걸 JSONArray에 넣기 위해 이렇게 만들었습니다. 
 	*/
@@ -45,7 +45,7 @@ public class main {
 	* @ breif  : 상품을 조회하는 기능
 	* @ detail : 상품명으로 검색해서 해당 상품명이 있으면 jsonArray를  그 상품에 id랑 상품명 사이즈 색 종류를 출력시켜준다
 	* @ 작성자   : 이성재
-	* @ 작성일자 : 2021 - 06 - 10
+	* @ 작성일자  : 2021 - 06 - 10
 	* @ param  : 상품목록이 들어가있는 jsonArray객체를 조회하기 위해 받아옴(JSONArray jsonArray)
 	* @ why    : 상품명이 어디 인덱스에 있는지 잘 모르기 때문에 전체를 돌아서 해당 값을 찾아서 그 jsonObject에 해당 값들을 출력하기 위해 이렇게 만들었습니다.
 	*/
@@ -67,6 +67,15 @@ public class main {
 			}
     }
 	
+	/*
+	* @ 메소드명  : ShowProductsAll
+	* @ breif  : 상품을 전체 조회하는 기능
+	* @ detail : 상품명으로 검색해서 해당 상품명이 있으면 jsonArray를  그 상품에 id랑 상품명 사이즈 색 종류를 출력시켜준다
+	* @ 작성자   : 이성재
+	* @ 작성일자  : 2021 - 06 - 10
+	* @ param  : 상품목록이 들어가있는 jsonArray객체를 조회하기 위해 받아옴(JSONArray jsonArray)
+	* @ why    : 전체 jsonArray에 jsonObject값을 출력하기 위해 만들었습니다.
+	*/
 	
 	public void ShowProductsAll(JSONArray jsonArray) {
 		  
@@ -82,11 +91,11 @@ public class main {
   }
 		
 	/*
-	 * @ 메소드명 : DeleteProducts
+	 * @ 메소드명  : DeleteProducts
 	 * @ breif  : 상품을 삭제하는 기능
 	 * @ detail : 상품명으로 검색해서 해당 상품명이 있으면 jsonArray를 그 상품을 삭제한다
 	 * @ 작성자   : 이성재
-	 * @ 작성일자 : 2021 - 06 - 10
+	 * @ 작성일자  : 2021 - 06 - 10
 	 * @ param  : 상품목록이 들어가있는 jsonArray객체를 조회하기 위해 받아옴(JSONArray jsonArray)
 	 * @ why    : 상품명이 어디 인덱스에 있는지 잘 모르기 때문에 전체를 돌아서 해당 값을 찾아서 그 jsonObject에 해당하는 걸 삭제하기 위해서 이렇게 만들었습니다.
 	 */
@@ -113,21 +122,20 @@ public class main {
 		}
 	}
 			
-
-
 	/*
 	* @ 메소드명  : count
 	* @ breif  : 상품을 계산하는 함수
-	* @ detail : 
+	* @ detail : 상품명을 입력해서 상품의 id값하고 일치하는 가격을 가져와서 리턴해줍니다.
 	* @ 작성자   : 이성재
-	* @ 작성일자 :  2021 - 06 -010
-	* @ return : (JSONObject (상품id , name , size , color , type))
-	* @ why    : Top클래스 생성자를 이용해서 JSONObject 객체에 저장해 리턴해서 그걸 JSONArray에 넣기 위해 이렇게 만들었습니다. 
+	* @ 작성일자  : 2021 - 06 -010
+	* @ param  : 상품목록이 들어가있는 jsonArray객체를 조회하기 위해 받아옴(JSONArray jsonArray)
+	* @ return : 상품의 가격입니다.
+ 	* @ why    : 계산할 떄 상품의 가격이 필요하기 때문에 그 해당 id값에 해당하는 물품의 가격을 찾는 과정이 필요해 만들었습니다.
 	*/
 	
 	public int count(JSONArray jsonArray) {
 		int count = 0;
-		int sum = 0;
+		int price = 0;
 		
 		  
 		Scanner scanf = new Scanner(System.in);
@@ -139,17 +147,17 @@ public class main {
 			JSONObject o = (JSONObject)it2.next();
 			if(o.get("id").equals(checkId)) {
 				String tempPrice = o.get("price").toString();
-				sum += Integer.parseInt(tempPrice);
+				price += Integer.parseInt(tempPrice);
 				break;
 			}
 			
 			count++;
 		}
 		
-		return sum;
+		return price;
 	}
 	
-	/*
+	  /*
 	   * @ 메소드명 : SaveJson
 	   * @ breif  : Json파일을 저장하는 기능
 	   * @ detail : jsonObject에 저장된 내용을 선언한 위치에 Json파일로 내보냅니다.
@@ -179,7 +187,15 @@ public class main {
 			Object obj = parser.parse(new FileReader("src/json/mydata.json"));	// 불러올 json 파일 위치선언
 			System.out.println(obj);	// json 파일 호출
 	 }
-	  /*
+
+//	public JSONObject ApplyJson(JSONArray jsonArray) throws IOException, org.json.simple.parser.ParseException  {
+//		 	JSONParser parser = new JSONParser();		// json파일 파싱하기위해 선언
+//			Object obj = parser.parse(new FileReader("src/json/mydata.json"));	// 불러올 json 파일 위치선언
+//			System.out.println("적용됐습니다.");	// json 파일 호출
+//			
+//	 }
+	 
+	 /*
 	   * @ 메소드명 : DryIceCount
 	   * @ breif  : 도착시간에 따라 드라이아이스 수를 정하는 함수
 	   * @ detail : 도착시간을 입력받아서 드라이아이스 수 정함
@@ -187,8 +203,9 @@ public class main {
 	   * @ 작성일자 : 2021 - 06 -10
 	   */
 	 public void DryIceCount() {
-		Scanner scand = new Scanner(System.in);
-		int arrivalTime = scand.nextInt();
+		 
+		Scanner scan = new Scanner(System.in);
+		int arrivalTime = scan.nextInt();
 		
 		if (arrivalTime < 60) {
 			System.out.println("드라이아이스 1개를 넣었습니다.");
@@ -202,7 +219,6 @@ public class main {
 		 
 	 }
 	 
-	
   public static void main(String[] args) throws IOException,org.json.simple.parser.ParseException {
 
 	main Main = new main();
@@ -216,10 +232,9 @@ public class main {
 			System.out.println("3. 상품 부분조회");
 			System.out.println("4. 메뉴 보기");
 			System.out.println("5. 계산");
-		    System.out.println("6. 포장");
-		    System.out.println("7. json 내보내기");
-		    System.out.println("8. json 불러오기");
-				
+		    System.out.println("6. json 내보내기");
+		    System.out.println("7. json 불러오기");
+			System.out.println("8. 나가기");
 	      
 			Scanner scan = new Scanner(System.in); 
 	
@@ -234,14 +249,16 @@ public class main {
 	                	jsonArray.add(Main.AddIcecream());
 	                	break;
 			        case 2:
-			        	System.out.println("항목을 제거합니다.");
-			        	System.out.println("상품 Id값을 입력해주세요");
+			        	Main.ShowProductsAll(jsonArray);
+			        	System.out.println("제거할 상품 이름을 입력해주세요");
 			        	Main.DeleteProducts(jsonArray);
 			        	break;
 	          
 					case 3: 
+						Main.ShowProductsAll(jsonArray);
 						System.out.println("조회할 상품 이름을 입력하세요");
 						Main.ShowProducts(jsonArray);
+						
 						break;
 	
 					case 4:
@@ -249,37 +266,52 @@ public class main {
 						break;
 	          
 					case 5:
+	                	System.out.println("");
+	                	
 						int tempSum = 0;
-						
-						Main.ShowProductsAll(jsonArray);
-						tempSum += Main.count(jsonArray);
 						System.out.println("살 상품 id를 입력하세요");
+						Main.ShowProductsAll(jsonArray);
+
+						
+						
+						tempSum += Main.count(jsonArray);
 						
 						while(true) {
+							System.out.println(" ");
 							System.out.println("더 사시겠습니까? Y : 1 , N : 2");
-							Main.ShowProductsAll(jsonArray);
 							int buyingChoice = scanf.nextInt();
+							System.out.println(" ");
+							
+							Main.ShowProductsAll(jsonArray);
 							
 							if(buyingChoice == 1) {
+								System.out.println("추가할 상품 id를 입력하세요");
 								tempSum += Main.count(jsonArray);
 							}else if (buyingChoice == 2) {
 								break;
 							}
 						}
 						System.out.println("총 " + tempSum + "원 입니다.");
-						break;
-					case 6:
+						System.out.println(" ");
 						System.out.println("예상 도착 소요 시간을 알려주세요(분단위)");
 						Main.DryIceCount();
-						break;
-					case 7: 
-						Main.SaveJson(jsonArray);
+						
 						break;
 	
-					case 8 :
-						Main.GetJson(jsonArray);
+					case 6: 
+						
+						Main.SaveJson(jsonArray);
+						System.out.println("json으로 불러왔습니다.");
 						break;
-					case 9 : // 나가기
+	
+					case 7 : 
+						
+						Main.GetJson(jsonArray);
+						System.out.println("json으로 불러왔습니다.");
+						break;
+						
+					case 8 : 
+						swi = false;
 						break;
 					default :
 						System.out.println("잘못 입력하셨습니다.");
